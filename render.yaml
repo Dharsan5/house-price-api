@@ -4,8 +4,7 @@ services:
     env: python
     plan: free
     region: oregon
-    buildCommand: pip install -r requirements.txt
-    preDeployCommand: python create_model.py
+    buildCommand: pip install -r requirements.txt && python create_model.py
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
