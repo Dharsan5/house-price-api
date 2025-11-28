@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: house-price-app
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    preDeployCommand: python create_model.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    autoDeploy: true
